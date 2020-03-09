@@ -1,0 +1,401 @@
+{
+	"objects": [
+		{
+			"application": "Local|Music Backend",
+			"name": "${ReleaseVersion}",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"application": "Local|Music IMS",
+			"name": "1905-15",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"application": "Local|Music UI",
+			"dependentApplicationVersions": [
+				"Local|Music IMS/1905-15"
+			],
+			"name": "1905-40",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"applicationVersions": [
+				"Local|Music IMS/1905-15",
+				"Local|Music Backend/${ReleaseVersion}",
+				"Local|Music UI/1905-40"
+			],
+			"ownerParties": [
+				"ashlomitest@gmail.com",
+				"mi.hagamad.sheli@gmail.com"
+			],
+			"memberParties": [
+				"ashlomitest@gmail.com",
+				"Music Team"
+			],
+			"markAsDonePhaseName": "",
+			"runOnCreation": false,
+			"version": "Sprint-25",
+			"name": "Music-FY19Q4-Demo-Disovery 2",
+			"kind": "Release"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"isProduction": false,
+			"releaseTokenTemplate": "NewMachineIP",
+			"scope": "PHASE_SCOPE",
+			"value": "",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"isProduction": false,
+			"releaseTokenTemplate": "Release-Token-1",
+			"scope": "PHASE_SCOPE",
+			"value": "",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"isProduction": false,
+			"scope": "PHASE_SCOPE",
+			"value": "",
+			"name": "ID-Num-Token",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"isProduction": false,
+			"scope": "PHASE_SCOPE",
+			"value": "",
+			"name": "jiraIssueKey",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"environments": [
+				"Test"
+			],
+			"approvalGate": "MANUAL",
+			"isApprovalRequired": false,
+			"skipTasksWithUnchangedApplications": false,
+			"ownerParties": [
+				"ashlomitest@gmail.com"
+			],
+			"name": "Test",
+			"kind": "Phase"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"environments": [
+				"UAT"
+			],
+			"approvalGate": "MANUAL",
+			"previousPhase": "Test",
+			"isApprovalRequired": false,
+			"skipTasksWithUnchangedApplications": false,
+			"ownerParties": [
+				"ashlomitest@gmail.com"
+			],
+			"name": "UAT-1",
+			"kind": "Phase"
+		},
+		{
+			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"environments": [
+				"Production"
+			],
+			"approvalGate": "MANUAL",
+			"previousPhase": "UAT-1",
+			"isApprovalRequired": false,
+			"skipTasksWithUnchangedApplications": false,
+			"name": "Production",
+			"kind": "Phase"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"isDisabled": false,
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Open Ticket Jira",
+			"kind": "Task",
+			"endpoint": "Music - Jira",
+			"plugin": "Jira/2.3",
+			"parameters": {
+				"issueType": "Story",
+				"summary": "This is a test",
+				"projectKey": "AP",
+				"issueKey": "%jiraIssueKey%",
+				"advanced": "false"
+			},
+			"type": "Create Jira Issue"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"isDisabled": false,
+			"previousTasks": [
+				"Open Ticket Jira"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "SNOW open change",
+			"kind": "Task",
+			"endpoint": "Music - ServiceNow-ven01720",
+			"plugin": "ServiceNow/2.2",
+			"parameters": {
+				"shortDescription": "This is a test"
+			},
+			"type": "Create Change Request"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"applicationVersions": [
+				"Local|Music Backend/${ReleaseVersion}"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"SNOW open change"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy Backend",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"applicationVersions": [
+				"Local|Music UI/1905-40"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy Backend"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy UI",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"applicationVersions": [
+				"Local|Music IMS/1905-15"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy UI"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy IMS",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"applicationVersions": [
+				"Local|Music Backend/${ReleaseVersion}",
+				"Local|Music UI/1905-40",
+				"Local|Music IMS/1905-15"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy IMS"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Update Jira Ticket",
+			"kind": "Task",
+			"endpoint": "Music - Jira",
+			"plugin": "Jira/2.3",
+			"parameters": {
+				"issueId": "%jiraIssueKey%",
+				"transition": "Closed"
+			},
+			"type": "Update Jira Issue Status"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"isDisabled": false,
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Open Ticket Jira",
+			"kind": "Task",
+			"endpoint": "Music - Jira",
+			"plugin": "Jira/2.3",
+			"parameters": {
+				"issueType": "Story",
+				"summary": "This is a test",
+				"projectKey": "AP",
+				"advanced": "false"
+			},
+			"type": "Create Jira Issue"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"isDisabled": false,
+			"previousTasks": [
+				"Open Ticket Jira"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "SNOW open change",
+			"kind": "Task",
+			"endpoint": "Music - ServiceNow-ven01720",
+			"plugin": "ServiceNow/2.2",
+			"parameters": {
+				"shortDescription": "This is a test"
+			},
+			"type": "Create Change Request"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"applicationVersions": [
+				"Local|Music Backend/${ReleaseVersion}"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"SNOW open change"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy Backend",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"applicationVersions": [
+				"Local|Music UI/1905-40"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy Backend"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy UI",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"applicationVersions": [
+				"Local|Music IMS/1905-15"
+			],
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy UI"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy IMS",
+			"kind": "Task",
+			"endpoint": "General REST",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy IMS"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Jira",
+			"kind": "Task",
+			"endpoint": "Music - Jira",
+			"plugin": "Jira/2.3",
+			"parameters": {
+				"issueType": "Story",
+				"summary": "This is a test story",
+				"projectKey": "AP",
+				"advanced": "false"
+			},
+			"type": "Create Jira Issue"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"isDisabled": false,
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy Web App",
+			"kind": "Task"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy Web App"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy Reports App",
+			"kind": "Task"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"isDisabled": false,
+			"previousTasks": [
+				"Deploy Reports App"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Run Tests",
+			"kind": "Task"
+		},
+		{
+			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"isDisabled": false,
+			"previousTasks": [
+				"Run Tests"
+			],
+			"isOnFailurePhaseEnabled": true,
+			"isSkipTaskOnFailure": false,
+			"name": "Deploy by REST",
+			"kind": "Task",
+			"endpoint": "Music- REST Deploy Prod",
+			"plugin": "REST/2.5",
+			"parameters": {
+				"method": "GET",
+				"statusCheck": "false"
+			},
+			"type": "REST"
+		}
+	]
+}
