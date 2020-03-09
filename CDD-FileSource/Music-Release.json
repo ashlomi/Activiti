@@ -2,7 +2,7 @@
 	"parameters": [
 		{
 			"name": "ReleaseVersion",
-			"value": "FB66823"
+			"value": "FB11567"
 		},
 		{
 			"name": "AppVersion",
@@ -17,7 +17,7 @@
 	"objects": [
 		{
 			"application": "Local|Music Backend",
-			"name": "${ReleaseVersion}",
+			"name": "1905-110",
 			"kind": "ApplicationVersion"
 		},
 		{
@@ -36,7 +36,7 @@
 		{
 			"applicationVersions": [
 				"Local|Music IMS/1905-15",
-				"Local|Music Backend/${ReleaseVersion}",
+				"Local|Music Backend/1905-110",
 				"Local|Music UI/1905-40"
 			],
 			"ownerParties": [
@@ -49,12 +49,12 @@
 			],
 			"markAsDonePhaseName": "",
 			"runOnCreation": false,
-			"version": "Sprint-25",
+			"version": "${ReleaseVersion}",
 			"name": "Music-FY19Q4-Demo-Disovery 2",
 			"kind": "Release"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"isProduction": false,
 			"releaseTokenTemplate": "NewMachineIP",
 			"scope": "PHASE_SCOPE",
@@ -62,7 +62,7 @@
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"isProduction": false,
 			"releaseTokenTemplate": "Release-Token-1",
 			"scope": "PHASE_SCOPE",
@@ -70,7 +70,7 @@
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"isProduction": false,
 			"scope": "PHASE_SCOPE",
 			"value": "",
@@ -78,7 +78,7 @@
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"isProduction": false,
 			"scope": "PHASE_SCOPE",
 			"value": "",
@@ -86,7 +86,7 @@
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"environments": [
 				"Test"
 			],
@@ -100,7 +100,7 @@
 			"kind": "Phase"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"environments": [
 				"UAT"
 			],
@@ -115,7 +115,7 @@
 			"kind": "Phase"
 		},
 		{
-			"release": "Music-FY19Q4-Demo-Disovery 2/Sprint-25",
+			"release": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}",
 			"environments": [
 				"Production"
 			],
@@ -127,7 +127,7 @@
 			"kind": "Phase"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"isDisabled": false,
 			"isOnFailurePhaseEnabled": true,
 			"isSkipTaskOnFailure": false,
@@ -145,7 +145,7 @@
 			"type": "Create Jira Issue"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"isDisabled": false,
 			"previousTasks": [
 				"Open Ticket Jira"
@@ -162,9 +162,9 @@
 			"type": "Create Change Request"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"applicationVersions": [
-				"Local|Music Backend/${ReleaseVersion}"
+				"Local|Music Backend/1905-110"
 			],
 			"isDisabled": false,
 			"previousTasks": [
@@ -183,7 +183,7 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"applicationVersions": [
 				"Local|Music UI/1905-40"
 			],
@@ -204,7 +204,7 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"applicationVersions": [
 				"Local|Music IMS/1905-15"
 			],
@@ -225,9 +225,9 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Test",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Test",
 			"applicationVersions": [
-				"Local|Music Backend/${ReleaseVersion}",
+				"Local|Music Backend/1905-110",
 				"Local|Music UI/1905-40",
 				"Local|Music IMS/1905-15"
 			],
@@ -248,7 +248,7 @@
 			"type": "Update Jira Issue Status"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"isDisabled": false,
 			"isOnFailurePhaseEnabled": true,
 			"isSkipTaskOnFailure": false,
@@ -265,7 +265,7 @@
 			"type": "Create Jira Issue"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"isDisabled": false,
 			"previousTasks": [
 				"Open Ticket Jira"
@@ -282,9 +282,9 @@
 			"type": "Create Change Request"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"applicationVersions": [
-				"Local|Music Backend/${ReleaseVersion}"
+				"Local|Music Backend/1905-110"
 			],
 			"isDisabled": false,
 			"previousTasks": [
@@ -303,7 +303,7 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"applicationVersions": [
 				"Local|Music UI/1905-40"
 			],
@@ -324,7 +324,7 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"applicationVersions": [
 				"Local|Music IMS/1905-15"
 			],
@@ -345,7 +345,7 @@
 			"type": "REST"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/UAT-1",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/UAT-1",
 			"isDisabled": false,
 			"previousTasks": [
 				"Deploy IMS"
@@ -365,7 +365,7 @@
 			"type": "Create Jira Issue"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Production",
 			"isDisabled": false,
 			"isOnFailurePhaseEnabled": true,
 			"isSkipTaskOnFailure": false,
@@ -373,7 +373,7 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Production",
 			"isDisabled": false,
 			"previousTasks": [
 				"Deploy Web App"
@@ -384,7 +384,7 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Production",
 			"isDisabled": false,
 			"previousTasks": [
 				"Deploy Reports App"
@@ -395,7 +395,7 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Music-FY19Q4-Demo-Disovery 2/Sprint-25/Production",
+			"phase": "Music-FY19Q4-Demo-Disovery 2/${ReleaseVersion}/Production",
 			"isDisabled": false,
 			"previousTasks": [
 				"Run Tests"
