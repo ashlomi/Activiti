@@ -2,7 +2,7 @@
 	"parameters": [
 		{
 			"name": "ReleaseVersion",
-			"value": "FB34009"
+			"value": "FB34009-1"
 		},
 		{
 			"name": "AppVersion",
